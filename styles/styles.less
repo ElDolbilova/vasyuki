@@ -1,0 +1,817 @@
+// out: styles.css
+/*--- variables --*/
+@backcolor: #E6DBCF;
+@btn_default: #1F1F1F;
+@btn_default_hover: #FBCE51;
+@color_red: #F54932;
+@color_black: #313131;
+@color_grey: #D9D9D9;
+@color_grey_logo: #595653;
+@color_white: #FFFFFF;
+
+@color_yellow: #FBCE51;
+@back_color_brown: #E9DED4;
+@text_color_black: @color_black ;
+@text_color_blue: #3057A2;
+@text_color_red: @color_red;
+
+@screen_size: 600px;
+@margin_blocks: 200px;
+
+/*--- general  ----*/
+@import "reset.css";
+
+@font-face {
+    font-family: "Merriweather";
+    src: url("../fonts/merriweather/Merriweather-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Golos Text";
+    src: url("../fonts/golostext/Golos-Text_Regular.ttf");
+}
+
+img {
+    /*    max-width: 100%;
+    height: auto;
+    object-fit: contain;*/
+}
+
+h1 {
+    font-family: "Golos Text";
+    font-size: 16.65px;
+    font-weight: 700;
+    line-height: 17.98px;
+    text-align: left;
+    color: @color_grey_logo;
+    text-transform: uppercase;
+
+    @media screen and (max-width: @screen_size) {
+        font-size: 14.42px;
+        line-height: 15.57px;
+    }
+}
+
+h2 {
+    font-family: "Merriweather";
+    font-size: 54px;
+    font-weight: 400;
+    line-height: 64.8px;
+    letter-spacing: 0px;
+    text-align: left;
+    text-transform: uppercase;
+
+    @media screen and (max-width: @screen_size) {
+        font-size: 36px;
+        line-height: 39.6px;
+    }
+
+}
+
+.colored-button(@_color, @_bgcolor, @_bordercolor) {
+    color: @_color;
+    background-color: @_bgcolor;
+    border: 2px solid @_bordercolor;
+}
+
+button {
+    color: #FFFFFF;
+    background-color: @btn_default;
+    border-radius: 66px;
+    border: 1px solid @btn_default;
+    font-family: "Golos Text";
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20.8px;
+    text-align: center;
+    padding: 0.75em 3em;
+
+
+    &.primary {
+        .colored-button(@color_white, @btn_default, @btn_default);
+
+        &:hover {
+            .colored-button(@btn_default, @btn_default_hover, @btn_default_hover);
+        }
+    }
+
+    &.secondary {
+        .colored-button(@btn_default, inherit, @btn_default);
+
+        @media screen and (max-width: @screen_size) {
+            background-color: rgba(256, 256, 256, 0.9);
+            border-color: rgba(256, 256, 256, 0.9);
+        }
+
+        &:hover {
+            .colored-button(@color_white, @btn_default, @btn_default);
+        }
+
+    }
+
+    @media screen and (max-width: @screen_size) {
+        padding: 0.75em 1em;
+    }
+
+}
+
+
+/*--- header part ----*/
+
+header {
+    background: url('../img/head-back.webp');
+    background-size: cover;
+    background-position: center;
+    padding: 0 72px;
+    min-height: 700px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @media screen and (max-width: @screen_size) {
+        background: url('../img/head-back-mob.webp');
+        background-size: cover;
+        background-position: center;
+        grid-template-columns: repeat(1, 1fr);
+        padding: 0 1.3em;
+        min-height: 812px;
+    }
+}
+
+.headline {
+    max-width: 542px;
+    justify-self: center;
+
+    .logo {
+        padding-top: 1.5em;
+
+        @media screen and (max-width: @screen_size) {
+            padding-top: 1em;
+        }
+
+        h1 {
+            display: inline-block;
+        }
+    }
+
+    .head-text {
+        p {
+            font-family: "Merriweather";
+            font-size: 60px;
+            font-weight: 400;
+            line-height: 66px;
+            text-align: left;
+            text-transform: uppercase;
+            margin-top: 1em;
+
+            @media screen and (max-width: @screen_size) {
+                font-size: 36px;
+                line-height: 39.6px;
+            }
+
+            span {
+                text-align: center;
+                display: flow-root;
+            }
+
+            &:last-of-type {
+                font-family: "Golos Text";
+                font-size: 18px;
+                line-height: 23.4px;
+                text-align: center;
+                text-transform: inherit;
+                margin-bottom: 2em;
+
+                @media screen and (max-width: @screen_size) {
+                    font-size: 18px;
+                    line-height: 23.4px;
+                    text-align: left;
+                }
+            }
+        }
+
+    }
+
+    .head-btns {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+
+        @media screen and (max-width: @screen_size) {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(2, 1fr);
+        }
+    }
+
+}
+
+.items-wrap {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+
+    @media screen and (max-width: @screen_size) {
+        &.top {
+            top: -38px;
+        }
+    }
+
+
+    .items {
+        flex-shrink: 0;
+        display: flex;
+        justify-content: space-around;
+
+        .item {
+            background: @color_red;
+            flex: 0 0 auto;
+            width: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Merriweather";
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 24px;
+            color: #fff;
+            padding: 18px 0;
+            transition: all 0.1s ease-in-out;
+            text-transform: uppercase;
+
+            &:before {
+                content: "\25CF";
+                color: #FFFFFF;
+                padding: 0 12px;
+            }
+
+            @media screen and (max-width: @screen_size) {
+                font-size: 16px;
+                //  line-height: 17.6px;
+                padding: 10px 0;
+            }
+        }
+
+        &.marquee {
+            animation: scroll 20s linear infinite;
+        }
+    }
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+
+main {
+    font-family: Merriweather;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 49px;
+    letter-spacing: 0px;
+    text-align: left;
+    padding: 2.2em 2em;
+
+    @media screen and (max-width: @screen_size) {
+        font-size: 28px;
+        line-height: 37.8px;
+        padding: 0.36em 0.8em;
+    }
+
+    /*--- maininfo part  ----*/
+    #maininfo-part {
+        width: 100%;
+        clear: both;
+        margin-bottom: @margin_blocks;
+
+        @media screen and (max-width: @screen_size) {
+            margin-bottom: 4em;
+        }
+
+        p {
+            color: @text_color_black;
+            margin: 0;
+            text-transform: uppercase;
+
+            @media screen and (max-width: @screen_size) {
+                font-size: 28px;
+                line-height: 37.8px;
+            }
+
+            strong {
+                font-weight: 700;
+                color: @text_color_red;
+            }
+        }
+
+        .line1 {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            gap: 1em;
+
+            @media screen and (max-width: @screen_size) {
+                display: block
+            }
+
+            picture {
+                flex: 1 0 auto;
+            }
+
+            img {
+
+                @media screen and (max-width: @screen_size) {
+                    float: right;
+                    shape-outside: ellipse(50% 25% at 50% 50%);
+                    padding: 7em 0;
+                    margin-left: 0;
+                }
+            }
+
+            p {
+
+                @media screen and (max-width: @screen_size) {
+                    display: flow;
+                }
+
+            }
+        }
+
+        .line2 {
+            display: grid;
+            grid-auto-flow: column dense;
+            gap: 1em 0.5em;
+
+            @media screen and (max-width: @screen_size) {
+                grid-auto-flow: row dense;
+            }
+
+            picture {
+                grid-row: span 2;
+            }
+
+            img {
+                margin-left: -27px;
+
+                @media screen and (max-width: @screen_size) {}
+            }
+
+            p {
+                align-self: end;
+
+                @media screen and (max-width: @screen_size) {
+                    float: none;
+                    padding-left: 0px;
+                }
+            }
+
+            .session-info {
+                font-family: "Golos Text";
+                font-size: 20px;
+                font-weight: 400;
+                line-height: 24px;
+                letter-spacing: 0px;
+                text-align: left;
+                color: @text_color_black;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-auto-flow: row dense;
+
+                @media screen and (max-width: @screen_size) {
+                    grid-template-columns: 1fr;
+                }
+
+                div {
+
+                    box-sizing: border-box;
+                    border-bottom: 2px solid #D0D0D0;
+                    padding: 16px 0;
+
+
+                    &:nth-child(2n+1) {
+                        opacity: 0.7;
+                        border-right: 2px solid #D0D0D0;
+
+                        @media screen and (max-width: @screen_size) {
+                            border-right: 0px;
+                            padding-bottom: 0px;
+                        }
+                    }
+
+                    &:nth-child(2n) {
+                        font-weight: 600;
+                        padding-left: 12px;
+
+                        @media screen and (max-width: @screen_size) {
+                            border-bottom: 2px solid #D0D0D0;
+                            padding-left: 0px;
+                        }
+                    }
+
+                    &:nth-last-child(-n+3) {
+                        border-bottom: 0px;
+                    }
+
+                    &:last-child {
+                        color: @text_color_blue;
+                        border-right: 0px;
+                        opacity: 1;
+                        grid-column: span 2;
+
+                        @media screen and (max-width: @screen_size) {
+                            font-size: 18px;
+                        }
+                    }
+
+                    @media screen and (max-width: @screen_size) {
+
+                        border-bottom: 0px;
+                    }
+                }
+            }
+
+            span {
+                text-decoration-line: line-through;
+                text-decoration-color: @color_red;
+            }
+
+        }
+    }
+
+    /*--- stages part  ----*/
+    #stages-part {
+        position: relative;
+        margin-bottom: @margin_blocks;
+
+        .stages-head {
+            max-width: 800px;
+            color: @text_color_black;
+            margin-bottom: 1em;
+
+            &-subtext {
+                font-family: "Golos Text";
+                font-size: 20px;
+                font-weight: 400;
+                line-height: 24px;
+                color: @text_color_blue;
+                vertical-align: baseline;
+                max-width: 280px;
+                display: inline-block;
+                margin-left: 1em;
+
+                @media screen and (max-width: @screen_size) {
+                    font-size: 18px;
+                    line-height: 22px;
+                    margin-left: 0;
+                }
+            }
+
+            h2 {
+                display: contents;
+            }
+        }
+
+        .stages-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto;
+            gap: 20px;
+
+            .stage {
+                &-1 {
+                    grid-column: 1;
+                    grid-row: 1;
+                }
+
+                &-2 {
+                    grid-column: 2;
+                    grid-row: 1;
+                }
+
+                &-3 {
+                    grid-column: 3;
+                    grid-row: ~"1 / 3";
+                }
+
+                &-4 {
+                    grid-column: 1;
+                    grid-row: 2;
+                }
+
+                &-5 {
+                    grid-column: 2;
+                    grid-row: 2;
+                }
+
+                &-6 {
+                    grid-column: 1;
+                    grid-row: 3;
+                }
+
+                &-7 {
+                    grid-column: ~'2 / 4';
+                    grid-row: 3;
+
+                    .stage-text {
+                        display: flow;
+                        margin-left: 2.8em;
+                    }
+
+                    .plane-outside {
+                        float: right;
+                        shape-outside: ellipse(280px 160px at right);
+                        width: 300px;
+                        height: 85px;
+                    }
+                }
+            }
+
+            @media screen and (max-width: @screen_size) {
+                grid-template-columns: repeat(5, 100%);
+                grid-template-rows: auto;
+                column-gap: 10px;
+                row-gap: 0px;
+                overflow-x: scroll;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+                margin-bottom: 1.5em;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                .stage {
+                    &-1 {
+                        padding-top: 4em;
+                        grid-column: 1;
+                        grid-row: 1;
+                    }
+
+                    &-2 {
+                        grid-column: 1;
+                        grid-row: 2;
+                    }
+
+                    &-3 {
+                        padding-top: 4em;
+                        grid-column: 2;
+                        grid-row: ~"1 / 3";
+                    }
+
+                    &-4 {
+                        padding-top: 4em;
+                        grid-column: 3;
+                        grid-row: 1;
+                    }
+
+                    &-5 {
+                        grid-column: 3;
+                        grid-row: 2;
+                    }
+
+                    &-6 {
+                        padding-top: 4em;
+                        grid-column: 4;
+                        grid-row: ~"1 / 3";
+                    }
+
+                    &-7 {
+                        padding-top: 4em;
+                        grid-column: 5;
+                        grid-row: ~"1 / 3";
+
+                        .stage-text {
+                            padding-right: 0;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .stage-item {
+            background: repeat url('../img/stages-back.png');
+            padding: 20px;
+        }
+
+        .stage-text {
+            font-family: "Golos Text";
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 24px;
+            letter-spacing: 0px;
+            text-align: left;
+            color: @text_color_black;
+            display: flow-root;
+
+            @media screen and (max-width: @screen_size) {
+                font-size: 18px;
+                line-height: 21.6px;
+            }
+        }
+
+        .stage-num {
+            font-family: "Golos Text";
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: 0px;
+            text-align: left;
+            color: @text_color_black;
+            background-color: #FFFFFF;
+            border-radius: 20px;
+            margin: 0 20px 0 0;
+            padding: 6px 13px;
+            float: left;
+        }
+
+        .plane {
+            position: absolute;
+            right: -63px;
+            bottom: 0em;
+
+            @media screen and (max-width: @screen_size) {
+                top: 8em;
+                right: 0;
+            }
+        }
+
+        .stage-carousel-btns {
+            display: none;
+            width: 100%;
+            max-width: 184px;
+            margin: 0 auto;
+
+            button {
+                font-family: "Golos Text";
+                font-size: 20px;
+                font-weight: 400;
+                line-height: 24px;
+                letter-spacing: 0px;
+                text-align: left;
+                color: @text_color_black;
+                border-radius: 20px;
+                padding: 6px 13px;
+                background-color: @color_black;
+                border-width: 0;
+                color: #FFF;
+                display: inline;
+
+                &:hover {
+                    background-color: @color_yellow;
+                }
+
+                &:disabled {
+                    background-color: @color_grey;
+                }
+
+                &.stage-prev {
+                    margin-right: 2px;
+
+                    &::before {
+                        content: "\276E";
+                        margin: 0 2px 0 -2px;
+                    }
+                }
+
+                &.stage-next {
+                    margin-left: 2px;
+
+                    &::before {
+                        content: "\276F";
+                    }
+                }
+            }
+
+            .stage-dot {
+                padding: 2px 2px;
+                font-size: 0.8em;
+
+                &::before {
+                    content: "\25CF";
+                    color: @color_grey;
+                }
+
+                &.active {
+                    &::before {
+                        color: @color_black;
+                    }
+                }
+            }
+
+            @media screen and (max-width: @screen_size) {
+                display: block;
+            }
+
+        }
+    }
+
+    /*--- participants part  ----*/
+    #participants-part {
+        h2{
+            margin-bottom: 1.11111em;
+        }
+        .participants-container {
+         
+            .participants-buttons {}
+
+            .participants-block {
+                display: flex;
+                overflow-x: hidden;
+                align-items: flex-start;
+                flex-wrap: nowrap;
+                   overflow-x: scroll;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+
+                .participant {
+                    flex: 1 0 33.33333%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .photo {
+                        width: 320px;
+                        overflow: hidden;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        position: relative;
+                        border-radius: 50%;
+                        margin-bottom: 0.8em;
+
+                        img {
+                            height: 100%;
+                            width: auto;
+                        }
+                    }
+
+                    .info {
+                        font-family: Golos Text;
+                        font-size: 24px;
+                        font-weight: 600;
+                        line-height: 28.8px;
+                        text-align: left;
+                        color: @text_color_black;
+
+                        p:last-of-type {
+                            font-size: 20px;
+                            font-weight: 400;
+                            line-height: 24px;
+                            opacity: 0.6;
+                            margin-top: 0.3em;
+                            margin-bottom: 1em;
+                        }
+
+                    }
+
+                    .detail-btn {
+                        font-family: Golos Text;
+                        font-size: 16px;
+                        font-weight: 500;
+                        line-height: 19.2px;
+                        text-align: left;
+                        color: @text_color_blue;
+                        padding:0.5em 12px;
+                        border: 1px solid @text_color_blue;
+                        border-radius: 62px;
+                        
+                        &:hover{
+                            background-color:@text_color_blue; 
+                            color: @color_white;                        
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*-- footer--*/
+footer {
+    background-color: @back_color_brown;
+    margin-top: 8.75em;
+
+    p {
+        font-family: "Golos Text";
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19.2px;
+        text-align: left;
+        color: @text_color_black;
+        opacity: 0.6;
+        padding: 2.5em 4.5em;
+
+        @media screen and (max-width: @screen_size) {
+            padding: 2.25em 1.25em 3.25em;
+        }
+    }
+
+}
