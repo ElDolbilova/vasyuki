@@ -609,17 +609,81 @@ main #stages-part .stage-carousel-btns .stage-dot.active::before {
     display: block;
   }
 }
+main #participants-part {
+  position: relative;
+}
 main #participants-part h2 {
   margin-bottom: 1.11111em;
 }
+main #participants-part .participants-container {
+  overflow: hidden;
+}
+main #participants-part .participants-container .participants-buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+main #participants-part .participants-container .participants-buttons button {
+  font-family: "Golos Text";
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #313131;
+  border-radius: 20px;
+  padding: 6px 13px;
+  background-color: #313131;
+  border-width: 0;
+  color: #FFF;
+  display: inline;
+}
+main #participants-part .participants-container .participants-buttons button:hover {
+  background-color: #FBCE51;
+}
+main #participants-part .participants-container .participants-buttons button.prev {
+  margin-right: 2px;
+}
+main #participants-part .participants-container .participants-buttons button.prev::before {
+  content: "\276E";
+  margin: 0 2px 0 -2px;
+}
+main #participants-part .participants-container .participants-buttons button.next {
+  margin-left: 2px;
+}
+main #participants-part .participants-container .participants-buttons button.next::before {
+  content: "\276F";
+}
+main #participants-part .participants-container .participants-buttons .part-num {
+  display: inline;
+  font-family: Golos Text;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  text-align: left;
+  opacity: 1;
+}
+main #participants-part .participants-container .participants-buttons .part-num span:last-child {
+  opacity: 0.6;
+}
+@media screen and (max-width: 600px) {
+  main #participants-part .participants-container .participants-buttons {
+    position: inherit;
+    align-self: center;
+    margin-top: 2em;
+  }
+}
+@media screen and (max-width: 600px) {
+  main #participants-part .participants-container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
 main #participants-part .participants-container .participants-block {
   display: flex;
-  overflow-x: hidden;
-  align-items: flex-start;
-  flex-wrap: nowrap;
-  overflow-x: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s;
 }
 main #participants-part .participants-container .participants-block .participant {
   flex: 1 0 33.33333%;
@@ -646,7 +710,7 @@ main #participants-part .participants-container .participants-block .participant
   font-size: 24px;
   font-weight: 600;
   line-height: 28.8px;
-  text-align: left;
+  text-align: center;
   color: #313131;
 }
 main #participants-part .participants-container .participants-block .participant .info p:last-of-type {
@@ -671,6 +735,16 @@ main #participants-part .participants-container .participants-block .participant
 main #participants-part .participants-container .participants-block .participant .detail-btn:hover {
   background-color: #3057A2;
   color: #FFFFFF;
+}
+@media screen and (max-width: 1024px) {
+  main #participants-part .participants-container .participants-block .participant {
+    flex: 1 0 50%;
+  }
+}
+@media screen and (max-width: 600px) {
+  main #participants-part .participants-container .participants-block .participant {
+    flex: 1 0 100%;
+  }
 }
 /*-- footer--*/
 footer {

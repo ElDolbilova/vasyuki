@@ -57,74 +57,128 @@ function secondMarquee() {
 }
 
 const smallScreens = 600;
-let slidesCnt = window.innerWidth > smallScreens ? 3 : 1;
-let step = 0;
+const mediumScreens = 1024;
+const MAX_SLIDES_CNT = 3;
+let slidesCnt = window.innerWidth > smallScreens ? ( window.innerWidth > mediumScreens ? MAX_SLIDES_CNT : 2): 1;
+let prevSlideCnt = slidesCnt;
+
+const sliderBtnLeft = document.querySelectorAll('.prev')[0];
+const sliderBtnRight = document.querySelectorAll('.next')[0];
+
+const slider = document.querySelector('.participants-block');
+const sliderItems = document.querySelectorAll('.participant');
+const dots = document.querySelector('.part-num');
+
+let countItems = sliderItems.length;
+let activeIndex = 0;
+let sliderElemWidth = document.querySelectorAll('.participant')[0].offsetWidth;
+sliderElemWidth *= slidesCnt;
+let position = sliderElemWidth;
+slider.style.transition = 'none';
+slider.style.transform = `translateX(-${position}px)`;
+
+for (let i = 0; i < slidesCnt; i++) {
+    let ditem = sliderItems[i];
+    slider.insertAdjacentElement('beforeend', ditem.cloneNode(true));
+}
+for (let i = 0; i < slidesCnt; i++) {
+    let ditem = sliderItems[sliderItems.length - 1 - i]
+    slider.insertAdjacentElement('afterbegin', ditem.cloneNode(true));
+}
+
+function pageNumText(curPage, totalPages) {
+    return `<span>${curPage}</span><span>/${totalPages}<span>`
+}
+
 
 function initParticipantsCarousel() {
-    let slides = Array.from(document.getElementsByClassName('participant'));
-    let elem = document.getElementsByClassName("participants-block");
-    
-    console.log(slides,slidesCnt)
-    
-    
-        for (let i = 0; i < slidesCnt; i++) {
-            console.log(slides.length-1-i)
-           elem[0].insertBefore(slides[slides.length-1-i].cloneNode(true),slides[0])
+
+    if (prevSlideCnt !== slidesCnt) {
+
+        for (let i = 0; i < prevSlideCnt; i++) {
+            slider.removeChild(slider.children[0]);
 
         }
-    
-    console.log(slides)
-    
-}
-function slidesStep(dir) {
-    let slides = Array.from(document.getElementsByClassName('participant'));
-    let elem = document.getElementsByClassName("participants-block");
-    console.log(slides)
-    
-    if ((step + 1) * slidesCnt >= slides.length) {
-        //копируем slidesCnt первых элементов в хвост при dir>0
-        for (let i = 0; i < slidesCnt; i++) {
-           elem[0].appendChild(slides[i].cloneNode(true))
+        for (let i = 0; i < prevSlideCnt; i++) {
+            slider.removeChild(slider.lastChild);
+        }
 
+        for (let i = 0; i < slidesCnt; i++) {
+            let ditem = sliderItems[i];
+            slider.insertAdjacentElement('beforeend', ditem.cloneNode(true));
+        }
+        for (let i = 0; i < slidesCnt; i++) {
+            let ditem = sliderItems[sliderItems.length - 1 - i]
+            slider.insertAdjacentElement('afterbegin', ditem.cloneNode(true));
         }
     }
 
-    //скролл
-    console.log(dir * slidesCnt * slides[0].clientWidth,parseInt(dir),slidesCnt,slides[0].clientWidth,elem[0].scrollLeft)
+    activeIndex = 0;
+    sliderElemWidth = document.querySelectorAll('.participant')[0].offsetWidth;
+    sliderElemWidth *= slidesCnt;
+    position = sliderElemWidth;
+    slider.style.transition = 'none';
+    slider.style.transform = `translateX(-${position}px)`;
+    prevSlideCnt = slidesCnt;
+    dots.innerHTML = pageNumText(activeIndex + slidesCnt, countItems);
 
-    elem[0].scrollTo({
-        top: 0,
-        left: elem[0].scrollLeft + parseInt(dir) * slidesCnt * slides[0].clientWidth,
-        behavior: "smooth",
-    });
-
-    if ((step + 1) * slidesCnt >= slides.length) {
-        
-        //удаляем slidesCnt первых элементов  при dir>0
-for (let i = 0; i < slidesCnt; i++) {
-        elem[0].removeChild(slides[i])
-       
 }
-         elem[0].scrollTo({
-        top: 0,
-        left: 1,
-        behavior: "instant",
-    });
+
+const onRightBtnClick = () => {
+
+    activeIndex += slidesCnt;
+
+    if (activeIndex === countItems) {
+        activeIndex = 0;
+        slider.style.transform = `translateX(-${position + sliderElemWidth}px)`;
+
+        setTimeout(() => {
+            position = sliderElemWidth;
+            slider.style.transition = 'none';
+            slider.style.transform = `translateX(-${position}px)`;
+        }, 300);
+
+    } else {
+        slider.style.transition = 'transform .3s';
+        position += sliderElemWidth;
+        slider.style.transform = `translateX(-${position}px)`;
+
     }
+    dots.innerHTML = pageNumText(activeIndex + slidesCnt, countItems);
+};
 
-    step = ((step + parseInt(dir))*slidesCnt + slides.length) % (slides.length);
-    console.log(step,elem[0].scrollLeft)
+const onLeftBtnClick = () => {
+    activeIndex -= slidesCnt;
+    if (activeIndex === -slidesCnt) {
+        slider.style.transition = 'transform .3s';
+        slider.style.transform = `translateX(0px)`;
+        activeIndex = countItems - slidesCnt;
 
-}
+        setTimeout(() => {
+            slider.style.transition = 'none';
+            position = sliderElemWidth * (countItems / slidesCnt);
+            slider.style.transform = `translateX(-${position}px)`;
+        }, 300);
+    } else {
+        slider.style.transition = 'transform .3s';
+        position -= sliderElemWidth;
+        slider.style.transform = `translateX(-${position}px)`;
+    }
+    dots.innerHTML = pageNumText(activeIndex + slidesCnt, countItems);
+};
 
 setInterval(function () {
-    slidesStep(1);
+    onRightBtnClick();
 }, 4000);
+
+sliderBtnRight.addEventListener('click', onRightBtnClick);
+sliderBtnLeft.addEventListener('click', onLeftBtnClick);
 
 window.addEventListener("resize", () => {
     setStageWidth();
-    slidesCnt = window.innerWidth > smallScreens ? 3 : 1;
-    console.log(slidesCnt);
+    slidesCnt = window.innerWidth > smallScreens ? ( window.innerWidth > mediumScreens ? MAX_SLIDES_CNT : 2): 1;
+    initParticipantsCarousel();
+
 });
 initStageCarousel();
 initParticipantsCarousel();
