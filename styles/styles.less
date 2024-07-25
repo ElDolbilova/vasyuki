@@ -16,6 +16,8 @@
 @text_color_red: @color_red;
 
 @screen_size: 600px;
+@tablet_screen:768px;
+@medium_screen: 900px;
 @margin_blocks: 200px;
 
 /*--- general  ----*/
@@ -68,13 +70,17 @@ h2 {
 
 }
 
+html{
+    scroll-behavior: smooth; 
+}
+
 .colored-button(@_color, @_bgcolor, @_bordercolor) {
     color: @_color;
     background-color: @_bgcolor;
     border: 2px solid @_bordercolor;
 }
 
-button {
+button,a {
     color: #FFFFFF;
     background-color: @btn_default;
     border-radius: 66px;
@@ -85,6 +91,7 @@ button {
     line-height: 20.8px;
     text-align: center;
     padding: 0.9em 3em;
+    text-decoration: none;
 
 
     &.primary {
@@ -117,7 +124,6 @@ button {
 
 .arrow-button() {}
 
-
 /*--- header part ----*/
 
 header {
@@ -136,6 +142,10 @@ header {
         grid-template-columns: repeat(1, 1fr);
         padding: 0 1.3em;
         min-height: 812px;
+    }
+
+    @media screen and (min-width: 1367px) {
+        padding: 0 13%;
     }
 }
 
@@ -276,7 +286,6 @@ header {
     }
 }
 
-
 main {
     font-family: Merriweather;
     font-size: 36px;
@@ -286,7 +295,7 @@ main {
     text-align: left;
     padding: 2.2em 2em;
 
-    @media screen and (max-width: @screen_size) {
+    @media screen and (max-width: @tablet_screen) {
         font-size: 28px;
         line-height: 37.8px;
         padding: 0.36em 0.8em;
@@ -296,7 +305,7 @@ main {
     #maininfo-part {
         width: 100%;
         clear: both;
-        margin-bottom: @margin_blocks;
+        margin-bottom: 4.8em;
 
         @media screen and (max-width: @screen_size) {
             margin-bottom: 4em;
@@ -333,7 +342,6 @@ main {
             }
 
             img {
-
                 @media screen and (max-width: @screen_size) {
                     float: right;
                     shape-outside: ellipse(50% 25% at 50% 50%);
@@ -402,8 +410,8 @@ main {
                 margin-top: 3em;
 
                 @media screen and (max-width: @screen_size) {
-                   // grid-template-columns: 1fr;
-                    display:flex;
+                    // grid-template-columns: 1fr;
+                    display: flex;
                     flex-direction: column;
                 }
 
@@ -484,7 +492,7 @@ main {
             color: @text_color_black;
             margin-bottom: 1.5em;
 
-            @media screen and (max-width: @screen_size) {
+            @media screen and (max-width: @tablet_screen) {
                 margin-bottom: 5em;
             }
 
@@ -499,7 +507,7 @@ main {
                 display: inline-block;
                 margin-left: 0.5em;
 
-                @media screen and (max-width: @screen_size) {
+                @media screen and (max-width: @tablet_screen) {
                     font-size: 18px;
                     line-height: 22px;
                     margin-left: 0;
@@ -561,12 +569,12 @@ main {
                     .stage-text {
                         display: flow;
                         margin-left: 2.8em;
-                        margin-right: 330px;
+                        margin-right: 305px;
                     }
                 }
             }
 
-            @media screen and (max-width: @screen_size) {
+            @media screen and (max-width: @tablet_screen) {
                 grid-template-columns: repeat(5, 100%);
                 grid-template-rows: auto;
                 column-gap: 10px;
@@ -632,7 +640,7 @@ main {
 
         .stage-item {
             background: repeat url('../img/stages-back.png');
-            padding: 20px;
+            padding: 20px 19px 20px;
         }
 
         .stage-text {
@@ -645,7 +653,7 @@ main {
             color: @text_color_black;
             display: flow-root;
 
-            @media screen and (max-width: @screen_size) {
+            @media screen and (max-width: @tablet_screen) {
                 font-size: 18px;
                 line-height: 21.6px;
             }
@@ -671,7 +679,7 @@ main {
             right: -63px;
             bottom: 0em;
 
-            @media screen and (max-width: @screen_size) {
+            @media screen and (max-width: @tablet_screen) {
                 top: -150px;
                 right: 0;
                 left: 1em;
@@ -725,6 +733,12 @@ main {
                 }
             }
 
+            @media (hover: none) {
+                button:hover {
+                    background-color: @color_black;
+                }
+            }
+
             .stage-dot {
                 padding: 2px 2px;
                 font-size: 0.8em;
@@ -741,7 +755,7 @@ main {
                 }
             }
 
-            @media screen and (max-width: @screen_size) {
+            @media screen and (max-width: @tablet_screen) {
                 display: block;
             }
 
@@ -772,12 +786,17 @@ main {
                     letter-spacing: 0px;
                     text-align: left;
                     color: @text_color_black;
-                    border-radius: 20px;
-                    padding: 6px 13px;
+                    border-radius: 24px;
+                    padding: 12px 20px;
                     background-color: @color_black;
                     border-width: 0;
                     color: #FFF;
                     display: inline;
+
+                    @media screen and (max-width: @screen_size) {
+                        border-radius: 20px;
+                        padding: 6px 13px;
+                    }
 
                     &:hover {
                         background-color: @color_yellow;
@@ -801,6 +820,12 @@ main {
                     }
                 }
 
+                @media (hover: none) {
+                    button:hover {
+                        background-color: @color_black;
+                    }
+                }
+
                 .part-num {
                     display: inline;
                     font-family: Golos Text;
@@ -814,6 +839,9 @@ main {
                         opacity: 0.6;
                     }
 
+                }
+                @media screen and (max-width: 950px) {
+                    top:1.75em;
                 }
 
                 @media screen and (max-width: @screen_size) {
@@ -908,11 +936,10 @@ main {
     }
 }
 
-
 /*-- footer--*/
 footer {
     background-color: @back_color_brown;
-    margin-top: 8.75em;
+    margin-top: 3.8emem;
 
     p {
         font-family: "Golos Text";
