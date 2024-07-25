@@ -55,7 +55,7 @@ button {
   font-weight: 500;
   line-height: 20.8px;
   text-align: center;
-  padding: 0.75em 3em;
+  padding: 0.9em 3em;
 }
 button.primary {
   color: #FFFFFF;
@@ -110,7 +110,6 @@ header {
 }
 .headline {
   max-width: 542px;
-  justify-self: center;
 }
 .headline .logo {
   padding-top: 1.5em;
@@ -122,6 +121,7 @@ header {
 }
 .headline .logo h1 {
   display: inline-block;
+  word-spacing: 0.25em;
 }
 .headline .head-text p {
   font-family: "Merriweather";
@@ -142,6 +142,9 @@ header {
   text-align: center;
   display: flow-root;
 }
+.headline .head-text p span:last-of-type {
+  text-align: right;
+}
 .headline .head-text p:last-of-type {
   font-family: "Golos Text";
   font-size: 18px;
@@ -149,6 +152,7 @@ header {
   text-align: center;
   text-transform: inherit;
   margin-bottom: 2em;
+  margin-top: 1.45em;
 }
 @media screen and (max-width: 600px) {
   .headline .head-text p:last-of-type {
@@ -196,7 +200,7 @@ header {
   font-weight: 400;
   line-height: 24px;
   color: #fff;
-  padding: 18px 0;
+  padding: 16px 0;
   transition: all 0.1s ease-in-out;
   text-transform: uppercase;
 }
@@ -294,14 +298,14 @@ main #maininfo-part .line1 picture {
   }
 }
 main #maininfo-part .line2 {
-  display: grid;
-  grid-auto-flow: column dense;
-  gap: 1em 0.5em;
+  display: flex;
+}
+@media screen and (max-width: 950px) {
+  main #maininfo-part .line2 {
+    display: block;
+  }
 }
 @media screen and (max-width: 600px) {
-  main #maininfo-part .line2 {
-    grid-auto-flow: row dense;
-  }
 }
 main #maininfo-part .line2 picture {
   grid-row: span 2;
@@ -318,6 +322,11 @@ main #maininfo-part .line2 p {
     padding-left: 0px;
   }
 }
+main #maininfo-part .line2 .right-part {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
 main #maininfo-part .line2 .session-info {
   font-family: "Golos Text";
   font-size: 20px;
@@ -327,18 +336,20 @@ main #maininfo-part .line2 .session-info {
   text-align: left;
   color: #313131;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.3fr;
   grid-auto-flow: row dense;
+  margin-top: 3em;
 }
 @media screen and (max-width: 600px) {
   main #maininfo-part .line2 .session-info {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
   }
 }
 main #maininfo-part .line2 .session-info div {
   box-sizing: border-box;
   border-bottom: 2px solid #D0D0D0;
-  padding: 16px 0;
+  padding: 0.8em 0;
 }
 main #maininfo-part .line2 .session-info div:nth-child(2n+1) {
   opacity: 0.7;
@@ -368,11 +379,20 @@ main #maininfo-part .line2 .session-info div:last-child {
   border-right: 0px;
   opacity: 1;
   grid-column: span 2;
+  margin-top: 1.5em;
 }
 @media screen and (max-width: 600px) {
   main #maininfo-part .line2 .session-info div:last-child {
     font-size: 18px;
   }
+}
+main #maininfo-part .line2 .session-info div:nth-child(1),
+main #maininfo-part .line2 .session-info div:nth-child(2) {
+  padding-top: 0;
+}
+main #maininfo-part .line2 .session-info div:nth-last-child(-n+3),
+main #maininfo-part .line2 .session-info div:nth-last-child(-n+2) {
+  padding-bottom: 0;
 }
 @media screen and (max-width: 600px) {
   main #maininfo-part .line2 .session-info div {
@@ -390,7 +410,12 @@ main #stages-part {
 main #stages-part .stages-head {
   max-width: 800px;
   color: #313131;
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
+}
+@media screen and (max-width: 600px) {
+  main #stages-part .stages-head {
+    margin-bottom: 5em;
+  }
 }
 main #stages-part .stages-head-subtext {
   font-family: "Golos Text";
@@ -401,17 +426,22 @@ main #stages-part .stages-head-subtext {
   vertical-align: baseline;
   max-width: 280px;
   display: inline-block;
-  margin-left: 1em;
+  margin-left: 0.5em;
 }
 @media screen and (max-width: 600px) {
   main #stages-part .stages-head-subtext {
     font-size: 18px;
     line-height: 22px;
     margin-left: 0;
+    max-width: inherit;
+    margin-top: 0.3em;
   }
 }
 main #stages-part .stages-head h2 {
   display: contents;
+}
+main #stages-part .stages-body {
+  position: relative;
 }
 main #stages-part .stages-container {
   display: grid;
@@ -450,12 +480,7 @@ main #stages-part .stages-container .stage-7 {
 main #stages-part .stages-container .stage-7 .stage-text {
   display: flow;
   margin-left: 2.8em;
-}
-main #stages-part .stages-container .stage-7 .plane-outside {
-  float: right;
-  shape-outside: ellipse(280px 160px at right);
-  width: 300px;
-  height: 85px;
+  margin-right: 330px;
 }
 @media screen and (max-width: 600px) {
   main #stages-part .stages-container {
@@ -472,7 +497,7 @@ main #stages-part .stages-container .stage-7 .plane-outside {
     display: none;
   }
   main #stages-part .stages-container .stage-1 {
-    padding-top: 4em;
+    padding-top: 2em;
     grid-column: 1;
     grid-row: 1;
   }
@@ -481,12 +506,12 @@ main #stages-part .stages-container .stage-7 .plane-outside {
     grid-row: 2;
   }
   main #stages-part .stages-container .stage-3 {
-    padding-top: 4em;
+    padding-top: 2em;
     grid-column: 2;
     grid-row: 1 / 3;
   }
   main #stages-part .stages-container .stage-4 {
-    padding-top: 4em;
+    padding-top: 2em;
     grid-column: 3;
     grid-row: 1;
   }
@@ -495,17 +520,18 @@ main #stages-part .stages-container .stage-7 .plane-outside {
     grid-row: 2;
   }
   main #stages-part .stages-container .stage-6 {
-    padding-top: 4em;
+    padding-top: 2em;
     grid-column: 4;
     grid-row: 1 / 3;
   }
   main #stages-part .stages-container .stage-7 {
-    padding-top: 4em;
+    padding-top: 2em;
     grid-column: 5;
     grid-row: 1 / 3;
   }
   main #stages-part .stages-container .stage-7 .stage-text {
     padding-right: 0;
+    margin-right: 0;
   }
 }
 main #stages-part .stage-item {
@@ -549,8 +575,9 @@ main #stages-part .plane {
 }
 @media screen and (max-width: 600px) {
   main #stages-part .plane {
-    top: 8em;
+    top: -150px;
     right: 0;
+    left: 1em;
   }
 }
 main #stages-part .stage-carousel-btns {
