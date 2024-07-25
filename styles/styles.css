@@ -45,7 +45,11 @@ h2 {
     line-height: 39.6px;
   }
 }
-button {
+html {
+  scroll-behavior: smooth;
+}
+button,
+a {
   color: #FFFFFF;
   background-color: #1F1F1F;
   border-radius: 66px;
@@ -56,35 +60,42 @@ button {
   line-height: 20.8px;
   text-align: center;
   padding: 0.9em 3em;
+  text-decoration: none;
 }
-button.primary {
+button.primary,
+a.primary {
   color: #FFFFFF;
   background-color: #1F1F1F;
   border: 2px solid #1F1F1F;
 }
-button.primary:hover {
+button.primary:hover,
+a.primary:hover {
   color: #1F1F1F;
   background-color: #FBCE51;
   border: 2px solid #FBCE51;
 }
-button.secondary {
+button.secondary,
+a.secondary {
   color: #1F1F1F;
   background-color: inherit;
   border: 2px solid #1F1F1F;
 }
 @media screen and (max-width: 600px) {
-  button.secondary {
+  button.secondary,
+  a.secondary {
     background-color: rgba(255, 255, 255, 0.9);
     border-color: rgba(255, 255, 255, 0.9);
   }
 }
-button.secondary:hover {
+button.secondary:hover,
+a.secondary:hover {
   color: #FFFFFF;
   background-color: #1F1F1F;
   border: 2px solid #1F1F1F;
 }
 @media screen and (max-width: 600px) {
-  button {
+  button,
+  a {
     padding: 0.75em 1em;
   }
 }
@@ -106,6 +117,11 @@ header {
     grid-template-columns: repeat(1, 1fr);
     padding: 0 1.3em;
     min-height: 812px;
+  }
+}
+@media screen and (min-width: 1367px) {
+  header {
+    padding: 0 13%;
   }
 }
 .headline {
@@ -238,7 +254,7 @@ main {
   /*--- stages part  ----*/
   /*--- participants part  ----*/
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   main {
     font-size: 28px;
     line-height: 37.8px;
@@ -248,7 +264,7 @@ main {
 main #maininfo-part {
   width: 100%;
   clear: both;
-  margin-bottom: 200px;
+  margin-bottom: 4.8em;
 }
 @media screen and (max-width: 600px) {
   main #maininfo-part {
@@ -412,7 +428,7 @@ main #stages-part .stages-head {
   color: #313131;
   margin-bottom: 1.5em;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   main #stages-part .stages-head {
     margin-bottom: 5em;
   }
@@ -428,7 +444,7 @@ main #stages-part .stages-head-subtext {
   display: inline-block;
   margin-left: 0.5em;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   main #stages-part .stages-head-subtext {
     font-size: 18px;
     line-height: 22px;
@@ -480,9 +496,9 @@ main #stages-part .stages-container .stage-7 {
 main #stages-part .stages-container .stage-7 .stage-text {
   display: flow;
   margin-left: 2.8em;
-  margin-right: 330px;
+  margin-right: 305px;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   main #stages-part .stages-container {
     grid-template-columns: repeat(5, 100%);
     grid-template-rows: auto;
@@ -536,7 +552,7 @@ main #stages-part .stages-container .stage-7 .stage-text {
 }
 main #stages-part .stage-item {
   background: repeat url('../img/stages-back.png');
-  padding: 20px;
+  padding: 20px 19px 20px;
 }
 main #stages-part .stage-text {
   font-family: "Golos Text";
@@ -548,7 +564,7 @@ main #stages-part .stage-text {
   color: #313131;
   display: flow-root;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   main #stages-part .stage-text {
     font-size: 18px;
     line-height: 21.6px;
@@ -573,7 +589,7 @@ main #stages-part .plane {
   right: -63px;
   bottom: 0em;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   main #stages-part .plane {
     top: -150px;
     right: 0;
@@ -620,6 +636,11 @@ main #stages-part .stage-carousel-btns button.stage-next {
 main #stages-part .stage-carousel-btns button.stage-next::before {
   content: "\276F";
 }
+@media (hover: none) {
+  main #stages-part .stage-carousel-btns button:hover {
+    background-color: #313131;
+  }
+}
 main #stages-part .stage-carousel-btns .stage-dot {
   padding: 2px 2px;
   font-size: 0.8em;
@@ -631,7 +652,7 @@ main #stages-part .stage-carousel-btns .stage-dot::before {
 main #stages-part .stage-carousel-btns .stage-dot.active::before {
   color: #313131;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   main #stages-part .stage-carousel-btns {
     display: block;
   }
@@ -658,12 +679,18 @@ main #participants-part .participants-container .participants-buttons button {
   letter-spacing: 0px;
   text-align: left;
   color: #313131;
-  border-radius: 20px;
-  padding: 6px 13px;
+  border-radius: 24px;
+  padding: 12px 20px;
   background-color: #313131;
   border-width: 0;
   color: #FFF;
   display: inline;
+}
+@media screen and (max-width: 600px) {
+  main #participants-part .participants-container .participants-buttons button {
+    border-radius: 20px;
+    padding: 6px 13px;
+  }
 }
 main #participants-part .participants-container .participants-buttons button:hover {
   background-color: #FBCE51;
@@ -681,6 +708,11 @@ main #participants-part .participants-container .participants-buttons button.nex
 main #participants-part .participants-container .participants-buttons button.next::before {
   content: "\276F";
 }
+@media (hover: none) {
+  main #participants-part .participants-container .participants-buttons button:hover {
+    background-color: #313131;
+  }
+}
 main #participants-part .participants-container .participants-buttons .part-num {
   display: inline;
   font-family: Golos Text;
@@ -692,6 +724,11 @@ main #participants-part .participants-container .participants-buttons .part-num 
 }
 main #participants-part .participants-container .participants-buttons .part-num span:last-child {
   opacity: 0.6;
+}
+@media screen and (max-width: 950px) {
+  main #participants-part .participants-container .participants-buttons {
+    top: 1.75em;
+  }
 }
 @media screen and (max-width: 600px) {
   main #participants-part .participants-container .participants-buttons {
@@ -776,7 +813,7 @@ main #participants-part .participants-container .participants-block .participant
 /*-- footer--*/
 footer {
   background-color: #E9DED4;
-  margin-top: 8.75em;
+  margin-top: 3.8emem;
 }
 footer p {
   font-family: "Golos Text";
