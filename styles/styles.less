@@ -16,7 +16,7 @@
 @text_color_red: @color_red;
 
 @screen_size: 600px;
-@tablet_screen:768px;
+@tablet_screen: 768px;
 @medium_screen: 900px;
 @margin_blocks: 200px;
 
@@ -70,8 +70,8 @@ h2 {
 
 }
 
-html{
-    scroll-behavior: smooth; 
+html {
+    scroll-behavior: smooth;
 }
 
 .colored-button(@_color, @_bgcolor, @_bordercolor) {
@@ -80,7 +80,8 @@ html{
     border: 2px solid @_bordercolor;
 }
 
-button,a {
+button,
+a {
     color: #FFFFFF;
     background-color: @btn_default;
     border-radius: 66px;
@@ -144,7 +145,7 @@ header {
         min-height: 812px;
     }
 
-    @media screen and (min-width: 1367px) {
+    @media screen and (min-width: 1440px) {
         padding: 0 13%;
     }
 }
@@ -305,7 +306,7 @@ main {
     #maininfo-part {
         width: 100%;
         clear: both;
-        margin-bottom: 4.8em;
+        margin-bottom: 4.2em;
 
         @media screen and (max-width: @screen_size) {
             margin-bottom: 4em;
@@ -361,6 +362,8 @@ main {
 
         .line2 {
             display: flex;
+            gap: 0.5em;
+            margin-top: 0.3em;
 
             @media screen and (max-width: 950px) {
                 display: block;
@@ -382,8 +385,6 @@ main {
             }
 
             p {
-                align-self: end;
-
                 @media screen and (max-width: @screen_size) {
                     float: none;
                     padding-left: 0px;
@@ -407,10 +408,8 @@ main {
                 display: grid;
                 grid-template-columns: 1fr 1.3fr;
                 grid-auto-flow: row dense;
-                margin-top: 3em;
-
+               
                 @media screen and (max-width: @screen_size) {
-                    // grid-template-columns: 1fr;
                     display: flex;
                     flex-direction: column;
                 }
@@ -840,8 +839,9 @@ main {
                     }
 
                 }
+
                 @media screen and (max-width: 950px) {
-                    top:1.75em;
+                    top: 1.75em;
                 }
 
                 @media screen and (max-width: @screen_size) {
@@ -939,7 +939,7 @@ main {
 /*-- footer--*/
 footer {
     background-color: @back_color_brown;
-    margin-top: 3.8emem;
+    margin-top: 3.8em;
 
     p {
         font-family: "Golos Text";
